@@ -1,0 +1,27 @@
+@startuml DiagramaDeClases
+' Estilo visual opcional
+skinparam classAttributeIconSize 0
+skinparam classFontSize 12
+skinparam classBorderColor black
+skinparam classBackgroundColor white
+skinparam shadowing false
+
+class Arista {
+    - destino: String
+    - peso: Int
+}
+
+class GrafoDirigido {
+    - adyacencias: MutableMap<String, MutableList<Arista>>
+    + agregarNodo(nodo: String): Unit
+    + agregarArista(origen: String, destino: String, peso: Int): Unit
+    + obtenerVecinos(nodo: String): List<Arista>
+    + nodos(): Set<String>
+    + imprimirGrafo(): Unit
+    + cargarDesdeArchivo(ruta: String): Unit
+    + ordenTopologico(): List<String>
+    + caminoCritico(): Unit
+}
+
+GrafoDirigido --> "usa" Arista
+@enduml
